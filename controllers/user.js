@@ -66,4 +66,41 @@ async deleteExistingUser(req, res) {
       res.status(500).json(err);
     }
   },
+
+  async addNewFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { userid: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { new: true }
+      );
+
+      if (!user) {
+        return res.status(404).json({ message: 'No user associated with this ID' });
+      }
+
+      res.json(user);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json(err);
+  }
+},
+async DeleteNewFriend(req, res) {
+  try {
+    const user = await User.findOneAndUpdate(
+      { userid: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: 'No user associated with this ID' });
+    }
+
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+}
+}
 }
