@@ -14,12 +14,12 @@ const userSchema = new Schema ({
         match: 111,
     },
     thoughts: [{
-        type: Schema.Types.Object,
+        type: Schema.Types.ObjectId,
         ref: "Thought",
     }
 ],
     friends: [{
-        type: Schema.Types.Object,
+        type: Schema.Types.ObjectId,
         ref: "User",
     }
  ],
