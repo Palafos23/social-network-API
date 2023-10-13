@@ -23,7 +23,7 @@ const {
   router.route(':/userid/friends')
    .post(addNewFriend)
   // /api/users/:userId/friends/:friendsId
-  router.route(':/userid/friends/friendId')
+  router.route(':/userid/friends/:friendId')
   .post(DeleteNewFriend)
 
   module.exports = router;
