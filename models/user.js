@@ -11,7 +11,10 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         unique: true,
-        match: 111,
+        match:[
+            /^[A-Za-z0-9~!@#$%^&*()_+?><:;=-]{2,15}@[a-zA-Z]{5,10}.[a-z]{1,8}$/, 
+            'Enter an accepted email address',
+        ],
     },
     thoughts: [{
         type: Schema.Types.ObjectId,
